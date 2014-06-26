@@ -6,6 +6,6 @@
 		"image":"goern/rhel_candlepin",
 		"publicports":[
 			{"internal":80,"external":6060}
-		]
-	}
+		] }
+	]
 }
