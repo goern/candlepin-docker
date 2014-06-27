@@ -13,7 +13,9 @@ RUN yum -y update; yum clean all
 # install! 
 RUN yum install -y candlepin candlepin-tomcat6 candlepin-scl-runtime
 ADD ./container-etc/candlepin/candlepin.conf /etc/candlepin/
+ADD ./container-etc/candlepin/certs/candlepin-ca.key /etc/candlepin/certs/
 ADD ./container-etc/candlepin/certs/candlepin-ca.crt /etc/candlepin/certs/
+RUN chgrp tomcat /etc/candlepin/certs/candlepin-ca.*; chmod g+r /etc/candlepin/certs/candlepin-ca.*
 
 EXPOSE 8080
 
