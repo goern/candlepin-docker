@@ -11,6 +11,11 @@ RUN subscription-manager repos --disable rhel-ha-for-rhel-6-server-rpms ; subscr
 RUN yum -y update; yum clean all
 
 # install! 
-#RUN yum install -y candlepin candlepin-tomcat6 candlepin-scl-runtime
- 
+RUN yum install -y candlepin candlepin-tomcat6 candlepin-scl-runtime
+ADD ./container-etc/candlepin/candlepin.conf /etc/candlepin/
+ADD ./container-etc/candlepin/certs/candlepin-ca.crt /etc/candlepin/certs/
 
+EXPOSE 8080
+
+# FIXME this seems to be dirty hack
+CMD service tomcat6 start && tail -f /var/log/tomcat6/catalina.out
