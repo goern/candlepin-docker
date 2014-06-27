@@ -1,2 +1,3 @@
 container-etc/pki
 dockerbuild.log
+candlepin_gear_deploy.json.*

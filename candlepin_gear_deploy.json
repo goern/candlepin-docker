@@ -1,0 +1,30 @@
+{
+  "containers": [
+    {
+      "name": "candlepin",
+      "count": 1,
+      "image": "goern/rhel6candlepin",
+      "publicports": [
+        {
+          "internal": 8080,
+          "external": 10280
+        }
+      ],
+      "links": [
+        {
+          "to": "postgresql"
+        }
+      ]
+    },
+    {
+      "name": "postgresql",
+      "count": 1,
+      "image": "goern/postgresql:fedora-cloud",
+      "publicports": [
+        {
+          "internal": 5432
+        }
+      ]
+    }
+  ]
+}
